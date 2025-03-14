@@ -1,0 +1,131 @@
+x = <1,2,6,3,7>
+
+sub1 = <1,2,6,7>
+
+n = 5: 1-2-6-3...
+n = 4: 1-2-6...-7, 1-2-6-X (como 6 > 3) => 1-2-3-7
+
+                1
+                |
+                2
+                |
+            |<-   ->|
+            6       3
+            |       |
+            7       7
+
+x = <1,2,6,4,7,5,8>
+
+x' = <1,2,4,5,6,7>
+
+-------------------------------------
+    getMaxSeqN(node,size, bifNumber) :
+        n = 0;
+        for bif :
+            n+=1
+        if hasChildren
+            return getMaxSeqN(node,size - 1, bifNumber + n);
+        else if size == 0
+            return 1;
+        else return -bifNumber;
+                1
+                |
+                2
+                |
+            |<-   ->|
+            6       4 -> 5 
+            |       |
+            7       7
+            |       |
+            8       8
+
+------------------------------------------
+
+x = <2,3,4,5,8,7,1>
+
+                2
+                |
+                3
+                |
+                4
+                |
+                5 -> 7
+                |
+                8
+
+--------------------------------------
+
+x = <3,1,2,4,5>
+
+        3   1
+        |   |
+        4   2
+        |   |
+        5   4
+            |
+            5
+
+----------------------------------------
+v = [{name : "joao" ; age : 11}, {name : "Ana" , age :"34"}]
+
+<v[0].name = "slut";
+print(v[0])
+
+
+class tree :
+    node * nodes;
+
+class node :
+    int n;
+    node *next[], * previous;
+
+tree t = new tree();
+for el in x:
+
+
+int getMaxSeqN(NodeP node, int count) { //count = 1
+    if(!(node.hasChildren()))
+        return count;
+    else{
+        vector<int> vct;
+        for(NodeP child : node)
+            vct.push_back(getMaxSeqN(child, ++count));
+        return max(vct);
+    }
+}
+
+idea if timeout :
+
+    tree : 
+    vector<vector<node>> : eacho vector has nodes on their level:
+        ex  : level 0 has the root, level 1 has their children, and so on;
+        that way we know easily the size of the tree and the seqN;
+
+
+
+------------------------------------------------------------------------------
+
+    1   2   3   5
+1   1   1   1   1
+
+4   1   1   1   1   
+
+5   1   1   1   2
+
+6   1   1   1   2
+
+
+    1   7   8   2   3   4   
+
+1   1   1   1   1   1   1
+
+7   1   2   2   2   2   2
+
+8
+
+2
+
+3
+
+4
+
